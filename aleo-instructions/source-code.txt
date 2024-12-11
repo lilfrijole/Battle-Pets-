@@ -52,7 +52,6 @@ function get_random_number:
     async get_random_number r0 into r2;
     output r1 as RandomIndex.record;
     output r2 as nft_battle_4215.aleo/get_random_number.future;
-
 finalize get_random_number:
     input r0 as u128.public;
     get.or_use random_index[0u128] 0u128 into r1;
@@ -80,7 +79,6 @@ function mint_nft:
     async mint_nft r0.index r1 r2 r3 into r11;
     output r10 as NFT.record;
     output r11 as nft_battle_4215.aleo/mint_nft.future;
-
 finalize mint_nft:
     input r0 as u128.public;
     input r1 as u128.public;
@@ -99,7 +97,6 @@ function find_battle:
     async find_battle r2 self.caller into r4;
     output r3 as MatchNFT.record;
     output r4 as nft_battle_4215.aleo/find_battle.future;
-
 finalize find_battle:
     input r0 as u128.public;
     input r1 as address.public;
@@ -145,7 +142,6 @@ function finish_game:
     output r3 as NFT.record;
     output r4 as NFT.record;
     output r19 as nft_battle_4215.aleo/finish_game.future;
-
 finalize finish_game:
     input r0 as u128.public;
     input r1 as address.public;

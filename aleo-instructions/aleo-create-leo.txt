@@ -1,0 +1,26 @@
+Create Leo App
+Create Leo App
+Scaffolding Your First Aleo Project
+note
+
+Compatibility: Node.js version 18+
+
+With NPM:
+
+npm create leo-app@latest
+
+    Enter the project name.
+
+    This will prompt you to choose a preferred framework from the following options:
+        React
+        Node.js
+        Vanilla (JavaScript)
+
+    If you choose React as your framework, the supported templates are:
+        JavaScript + Leo
+        TypeScript + Leo
+        TypeScript + Next.js
+
+More Information
+
+Based on create-vite: https://github.com/vitejs/vite/tree/main/packages/create-vite

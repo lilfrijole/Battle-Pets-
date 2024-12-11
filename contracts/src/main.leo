@@ -1,5 +1,5 @@
 // The 'nft_battle' program.
-program nft_battle_4214.aleo {
+program nft_battle_4215.aleo {
     // Random record for minter to consume for NFT
     record RandomIndex {
         owner: address,
@@ -200,7 +200,7 @@ program nft_battle_4214.aleo {
         });
 
         // Move to next match
-        current_match_id.set(0u128, current_match_id.get(0u128) + 1u128);
+        current_match_id.set(0u128, current_match_id.get_or_use(0u128, 0u128) + 1u128);
     }
 }
 
