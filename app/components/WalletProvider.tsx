@@ -7,10 +7,9 @@ import { LeoWalletAdapter } from "@demox-labs/aleo-wallet-adapter-leo";
 import {
   DecryptPermission,
   WalletAdapterNetwork,
-  WalletError,
+  WalletError
 } from "@demox-labs/aleo-wallet-adapter-base";
 
-// Import the default styles
 import "@demox-labs/aleo-wallet-adapter-reactui/styles.css";
 
 interface Props {
@@ -18,17 +17,36 @@ interface Props {
 }
 
 export const WalletContextProvider: FC<Props> = ({ children }) => {
-  // Create the wallet adapter
   const wallets = useMemo(
-    () => [
-      new LeoWalletAdapter({
+    () => {
+      const adapter = new LeoWalletAdapter({
         appName: "Battle Pets",
-        timeout: 30000,
+        network: WalletAdapterNetwork.Testnet,
+        timeout: 60000,
         permissions: [
-          DecryptPermission.UponRequest,
-        ],
-      }),
-    ],
+          DecryptPermission.OnConnect,
+          DecryptPermission.OnSign,
+          DecryptPermission.UponRequest
+        ]
+      });
+
+      // Add connection listener to handle window closure
+      adapter.on('connect', () => {
+        // Try to close the window if it's a popup
+        if (window.opener) {
+          try {
+            // Send message to parent window
+            window.opener.postMessage({ type: 'WALLET_CONNECTED' }, '*');
+            // Close this window
+            window.close();
+          } catch (error) {
+            console.error('Error closing window:', error);
+          }
+        }
+      });
+
+      return [adapter];
+    },
     []
   );
 
@@ -37,10 +55,10 @@ export const WalletContextProvider: FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <WalletProvider
-      wallets={wallets}
-      decryptPermission={DecryptPermission.UponRequest}
-      autoConnect
+    <WalletProvider 
+      wallets={wallets} 
+      onError={onError}
+      autoConnect={false}
     >
       <WalletModalProvider>
         {children}

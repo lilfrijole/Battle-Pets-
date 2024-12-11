@@ -22,13 +22,27 @@ export default function BattlePage() {
   const battleId = params.id as string;
   const [selectedNFT, setSelectedNFT] = useState<BattleNFT | null>(null);
 
-  const getBadgeImage = (title: string) => {
-    switch (title) {
-      case 'Bronze Battle':
+  // Extract battle type from battleId (format: "type-timestamp-random")
+  const battleType = battleId.split('-')[0];
+  const battleTitle = `${battleType.charAt(0).toUpperCase() + battleType.slice(1)} Battle`;
+  
+  // Get credits based on battle type
+  const getCredits = (type: string) => {
+    switch (type.toLowerCase()) {
+      case 'bronze': return 1;
+      case 'silver': return 5;
+      case 'gold': return 10;
+      default: return 1;
+    }
+  };
+
+  const getBadgeImage = (type: string) => {
+    switch (type.toLowerCase()) {
+      case 'bronze':
         return '/bronze-badge.png';
-      case 'Silver Battle':
+      case 'silver':
         return '/silver-badge.png';
-      case 'Gold Battle':
+      case 'gold':
         return '/gold-badge.png';
       default:
         return '/bronze-badge.png';
@@ -79,7 +93,7 @@ export default function BattlePage() {
         <div className="absolute top-8 left-8 flex items-center gap-4">
           <div className="w-[94px] h-[94px]">
             <Image
-              src={getBadgeImage('Bronze Battle')}
+              src={getBadgeImage(battleType)}
               alt="Battle Badge"
               width={94}
               height={94}
@@ -87,8 +101,8 @@ export default function BattlePage() {
             />
           </div>
           <div>
-            <h1 className="text-2xl -mt-[12px] font-bold">Bronze Battle</h1>
-            <p className="text-gray-400">5 Aleo Credits</p>
+            <h1 className="text-2xl -mt-[12px] font-bold">{battleTitle}</h1>
+            <p className="text-gray-400">{getCredits(battleType)} Aleo Credits</p>
           </div>
         </div>
 

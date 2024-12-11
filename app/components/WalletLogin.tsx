@@ -73,6 +73,23 @@ export const WalletLogin: FC = () => {
     }
   }, [connected, wallet, router]);
 
+  // Add this effect after your existing useEffect
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === 'WALLET_CONNECTED') {
+        // Handle successful connection
+        console.log('Wallet connection confirmed');
+        // Close any remaining windows
+        if (window.opener) {
+          window.close();
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   const handleConnect = useCallback(async () => {
     console.log('Connection attempt:', {
       adapterExists: !!wallet?.adapter,

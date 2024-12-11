@@ -44,7 +44,7 @@ export default function Dashboard() {
         ...battles[battleType],
         {
           id: battleId,
-          creator: "erica" // Hardcoded for now
+          creator: "lil_frijole" // Hardcoded for now
         }
       ]
     };
