@@ -1,0 +1,87 @@
+This is an explanation of our game.
+Welcome to Battle Pets! Your Privacy-Powered Virtual Pet Battle Begins Here
+
+As a new trainer in the ZK Pets universe, you’re starting your journey with 3 unique NFTs! These NFTs represent your loyal companions, ready to join you in battles, quests, and beyond.
+Introducing Your New Friends. The Objective of the game is to join a battle and see the results. A facilitator will prove that one nft is stronger than the other in a certain attribute: strength, speed, and stamina.
+
+Players will join a table and click play. The rest is up to the gods.
+------
+This is the UX/UI of how the game will work 
+1. Lobby Screen
+Purpose:
+Allows users to choose a room with against other players.
+UI Elements:
+-- Onboarding Screen
+Game Title:
+Display the title of the game (e.g., "Battle Pets").
+A log in to Leo Wallet - (view leo-docs.txt)
+Include a simple logo or icon (e.g., a paw print or pet silhouette).
+
+-- Dashboard Screen
+After log user sees profile section at top:
+Show the player’s:
+Wallet address or username.
+Number of pets they own.
+Current Aleo credit balance.
+
+Room Selection Section Under profile
+Room List:
+A list to show the available rooms or a way to create your own. List included:
+Number for room
+User name
+Wager amount
+Button to join
+Clicking “Join” a room would open the battle screen
+Add game button to open game start settings component:
+User choose the wager amount
+Low Wager Room (e.g., 5 tokens).
+Medium Wager Room (e.g., 20 tokens).
+High Wager Room (e.g., 50 tokens).
+
+-- Battle Screen
+Purpose:
+Allows users to engage in a automatic battle with an opponent's pet at random selection. 
+
+Battle Title:
+Display the title or battle stage (e.g., "Battle Arena").
+Include the room wager level (e.g., "Wager: 50 Tokens").
+Player Info:
+Show the user’s pets:
+Pet name or ID.
+Users avatar and name 
+Display Pet image and attribute
+
+Main Battle Section
+
+Pet Stats (Shown for facilitator not the users):
+Include placeholder icons for the user’s and opponent’s pet stats, with details hidden (as ZK is used).
+Action Buttons:
+A "Start Battle" button to initiate the ZKP stat comparison.
+During the battle:
+Display turn results dynamically (e.g., "Pet A wins Turn 1").
+After Battle Results Show a "Play Turn" button.
+Outcome Section:
+Display the winner of the battle prominently.
+Include animations or effects to emphasize victory (e.g., confetti, glow).
+Wager Results:
+Show the wager results:
+Tokens won/lost.
+Updated balance.
+
+Navigation:
+Buttons for navigating to:
+Leaderboard (optional).
+Adopt a Pet (optional).
+Help Icon:
+Small help button or tooltip for explaining room rules.
+"Back to Lobby" button to return to the room selection screen.
+
+
+Visual Flow
+Lobby Screen
+Profile Header: User Info
+Main Section:  List room cards with wager levels.
+
+Battle Screen
+Header: Battle Title + Player Info.
+Main Section: Battle Progress + Action Buttons.
